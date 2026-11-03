@@ -1,67 +1,12 @@
 {
   "security.workspace.trust.untrustedFiles": "open",
+  "remote.SSH.enableRemoteCommand": true,
+  "remote.SSH.useLocalServer": false,
   "editor.fontSize": 15,
   "editor.fontLigatures": false,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": false,
   "editor.accessibilitySupport": "on",
-  "remote.SSH.remotePlatform": {
-    "121": "linux",
-    "168": "linux",
-    "124.223.26.100": "linux",
-    "192.168.43.225": "linux",
-    "192.168.43.17": "linux",
-    "jupyter.shutongxin224.xyz": "linux",
-    "150.158.50.164": "linux",
-    "58.199.160.138": "linux",
-    "58.199.157.181": "linux",
-    "47.254.32.209": "linux",
-    "47.254.52.144": "linux",
-    "47.251.57.251": "linux",
-    "47.251.63.122": "linux",
-    "10.10.70.67": "linux",
-    "58.199.164.48": "linux",
-    "47.251.51.141": "linux",
-    "47.251.14.9": "linux",
-    "47.254.33.242": "linux",
-    "connect.westb.seetacloud.com": "linux",
-    "58.199.162.83": "linux",
-    "workspace.featurize.cn": "linux",
-    "58.199.162.130": "linux",
-    "129.80.129.54": "linux",
-    "150.136.4.154": "linux",
-    "instance-20240609-075327.us-central1-a.zhaoliangvaio1987": "linux",
-    "instance-20240609-224724.us-central1-a.zhaoliangvaio1987": "linux",
-    "zhuofeng-tegdb.us-central1-a.zhaoliangvaio1987": "linux",
-    "zhuofeng-llm.us-central1-f.zhaoliangvaio1987": "linux",
-    "rag.us-central1-f.zhuofeng-project": "linux",
-    "18.205.66.212": "linux",
-    "3.88.224.180": "linux",
-    "teg.us-central1-f.zhuofeng-project": "linux",
-    "pan195": "linux",
-    "lambda_h100_2": "linux",
-    "vast_8_a100": "linux",
-    "vast_8_a100_80g": "linux",
-    "pan80": "linux",
-    "ping24_h20_8": "linux",
-    "alliance_fir": "linux",
-    "ssh ubuntu@192.222.54.173": "linux",
-    "ubuntu_163_192_204_128": "linux",
-    "pan_128": "linux",
-    "killarney": "linux",
-    "fir": "linux",
-    "pan220": "linux",
-    "ping24_h20": "linux",
-    "ssh ubuntu@150.136.144.82": "linux",
-    "ubuntu@150.136.144.82": "linux",
-    "pan199": "linux",
-    "ubuntu@192.222.50.78": "linux",
-    "pan185": "linux",
-    "pan168": "linux",
-    "pan89": "linux",
-    "pan121": "linux",
-    "login.vision.tamus.edu": "linux"
-  },
   "[python]": {
     "editor.formatOnType": true,
     "editor.defaultFormatter": "ms-python.black-formatter"
@@ -70,7 +15,6 @@
     "--max-line-length=248"
   ],
   "leetcode.endpoint": "leetcode",
-  "leetcode.workspaceFolder": "C:\\Users\\lizhuofeng\\.leetcode",
   "leetcode.defaultLanguage": "java",
   "leetcode.hint.commandShortcut": false,
   "leetcode.hint.configWebviewMarkdown": false,
@@ -102,7 +46,6 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "workbench.editor.empty.hint": "hidden",
   "git.openRepositoryInParentFolders": "never",
-  "cloudcode.project": "zhuofeng-project",
   "cloudcode.autoDependencies": "off",
   "debug.disassemblyView.showSourceCode": false,
   "C_Cpp.intelliSenseEngine": "disabled",
@@ -137,7 +80,7 @@
   ],
   "git.confirmSync": false,
   "flake8.args": [
-    "\u0022flake8.args\u0022: [\u0022--max-line-length=120\u0022]"
+    "\"flake8.args\": [\"--max-line-length=120\"]"
   ],
   "[csv]": {
     "editor.inlayHints.maximumLength": 0
@@ -163,7 +106,10 @@
   "latex-workshop.latex.recipes": [
     {
       "name": "latexmk",
-      "tools": ["latexmk"]
+      "tools": [
+        "latexmk"
+      ]
     }
-  ]
+  ],
+  "window.autoDetectColorScheme": false
 }

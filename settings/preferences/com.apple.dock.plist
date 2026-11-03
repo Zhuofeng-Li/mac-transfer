@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>autohide</key>
+	<true/>
+	<key>show-recents</key>
+	<true/>
+	<key>tilesize</key>
+	<real>78.0</real>
+	<key>wvous-br-corner</key>
+	<integer>14</integer>
+	<key>wvous-br-modifier</key>
+	<integer>0</integer>
+</dict>
+</plist>

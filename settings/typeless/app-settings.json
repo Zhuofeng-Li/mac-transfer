@@ -1,0 +1,44 @@
+{
+  "keyboardShortcut": {
+    "pushToTalk": "RightOption",
+    "handlesFreeMode": "LeftOption+Space",
+    "pasteLastTranscript": "LeftCtrl+LeftCmd+V",
+    "translationMode": "LeftShift+RightOption"
+  },
+  "featureShortcutBindings": {
+    "dictationMode": [
+      "RightOption"
+    ],
+    "askAnythingMode": [
+      "LeftOption+Space"
+    ],
+    "translationMode": [
+      "LeftShift+RightOption"
+    ],
+    "pasteLastTranscript": [
+      "LeftCtrl+LeftCmd+V"
+    ]
+  },
+  "preferredLanguage": "zh-CN",
+  "autoSelectLanguages": false,
+  "selectedLanguages": [
+    "en-US"
+  ],
+  "launchAtSystemStartup": true,
+  "showFlowBarOnDesktop": false,
+  "enableInteractionSoundEffects": true,
+  "enableShowAppInDock": true,
+  "historyDurationSeconds": -1,
+  "enabledMuteBackgroundAudio": true,
+  "translationModeTargetLanguageCode": "en-US",
+  "translationModeTargetLanguageCodes": [
+    "en-US"
+  ],
+  "translationModeAlertPreferredLanguageCode": null,
+  "appearancePreference": "system",
+  "__COMPATIBLE_V0_3_0_SELECTED_LANGUAGES_FLAG": false,
+  "__COMPATIBLE_TRANSLATION_MODE_SHORTCUT_CHECKED_FLAG": true,
+  "__COMPATIBLE_KEYBOARD_FORMAT_CHECKED_FLAG": true,
+  "__COMPATIBLE_FEATURE_SHORTCUT_BINDINGS_MIGRATED_FLAG": true,
+  "__COMPATIBLE_TRANSLATION_TARGET_LANGUAGE_CODES_MIGRATED_FLAG": true
+}

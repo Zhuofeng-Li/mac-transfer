@@ -1,115 +1,70 @@
-# dotfiles
+# mac-transfer
 
-Mac 环境一键迁移。通过 GitHub 同步配置，通过 mackup + iCloud 同步 app 设置。
+将这台 Mac 的操作设置迁移到新 Mac。最新快照：**2026-11-03**。
 
-## 一键安装（新 Mac）
+## 新电脑恢复
+
+先安装 Xcode Command Line Tools（`xcode-select --install`），然后：
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Zhuofeng-Li/dotfiles/main/bootstrap.sh)"
+git clone https://github.com/Zhuofeng-Li/mac-transfer.git ~/mac-transfer
+bash ~/mac-transfer/bootstrap.sh
 ```
 
-## 同步内容
-
-### CLI 工具
-| 工具 | 说明 |
-|------|------|
-| fish | Shell |
-| node | Node.js |
-| gh | GitHub CLI |
-| uv | Python 包管理 |
-| gemini-cli | Gemini CLI |
-| openjdk@17 | Java 17 |
-
-### GUI 应用
-| 应用 | 说明 |
-|------|------|
-| Alfred | 启动器 |
-| Anki | 记忆卡片 |
-| ChatGPT | OpenAI 客户端 |
-| Claude | Anthropic 客户端 |
-| Cursor | AI 编辑器 |
-| Dropbox | 云存储 |
-| f.lux | 护眼色温 |
-| Google Chrome | 浏览器 |
-| Hidden Bar | 菜单栏整理 |
-| IINA | 视频播放器 |
-| Karabiner-Elements | 键盘改键 |
-| MacTeX | LaTeX |
-| Miniconda | Python 环境 |
-| Notion | 笔记 |
-| Rectangle | 窗口管理 |
-| Scroll Reverser | 滚动方向 |
-| SimpleTex | 公式识别 |
-| Snipaste | 截图贴图 |
-| 腾讯会议 | 会议 |
-| TickTick | 待办 |
-| WeChat | 微信 |
-| XMind | 思维导图 |
-| Zoom | 会议 |
-
-### Cursor 设置与插件
-`cursor/settings.json` 和 `cursor/keybindings.json`，软链接到 `~/Library/Application Support/Cursor/User/`。在 Cursor 里修改设置后直接 `git push` 即可同步。
-
-插件列表保存在 `cursor/extensions.txt`（共 24 个），`bootstrap.sh` 会自动批量安装。
-
-**单独配置 Cursor（设置 + 插件一步到位）：**
+安装 Input Source Pro、搜狗输入法等手动安装项目。启动 Alfred 和 Typeless 各一次，让它们生成本机配置，然后退出 Alfred、Rectangle、Input Source Pro、Scroll Reverser、Snipaste、Cursor、Karabiner 设置窗口、f.lux、IINA 和 Typeless。
 
 ```bash
-bash ~/dotfiles/cursor/setup.sh
+# 先预览；不修改设置
+python3 ~/mac-transfer/settings/restore.py --dry-run
+# 恢复设置
+python3 ~/mac-transfer/settings/restore.py
+# 安装 Cursor 扩展（bootstrap 已执行过则可省略）
+bash ~/mac-transfer/cursor/install-extensions.sh
 ```
 
-更新插件列表：
+需要 Python 3.9 或更高版本。恢复后注销并重新登录；在系统设置中重新授权辅助功能、输入监控和屏幕录制。权限和软件许可证不会通过配置文件迁移。
+
+恢复会把原有文件和偏好设置备份到 `~/Library/Application Support/mac-transfer/backups/<时间>/`。系统偏好按键合并；文件以快照替换，Cursor 若原来使用同步软链接，会先备份内容并改为本地文件，避免覆盖同步目标。Alfred 本机配置会映射到新电脑的 localhash，并尊重新电脑现有的 Alfred 配置目录。Input Source Pro 的数据库会整体替换，所以请在新电脑建立新规则之前恢复。
+
+## 已备份内容
+
+| 项目 | 内容 | 状态 |
+|---|---|---|
+| Alfred 5 | 呼出快捷键、默认搜索范围和文件类型 | 当前配置包没有 Workflows、Snippets 或 Themes |
+| Rectangle | 自定义快捷键、默认快捷键方案、后续执行行为 | 已导出 |
+| Karabiner-Elements | 1 个 Profile、7 条复杂规则、自定义规则文件 | 与本机核对一致 |
+| Input Source Pro | 指示器、默认输入法、5 条应用记录和数据库结构 | 默认输入法是搜狗；当前无浏览器规则/快捷键组，应用记录未指定固定输入法 |
+| Scroll Reverser | 滚动反转、触控板行为 | 已导出 |
+| macOS | 已设置的系统快捷键、键盘偏好、触控板/鼠标手势、Dock 和 Finder 行为 | 仅选取操作偏好，不包含最近文件、Dock 固定项目或个人文本替换 |
+| Cursor | 编辑器设置、快捷键、25 个扩展 | 去掉远程主机列表、主机端口映射、云项目名和旧机器工作目录；本机 Snippets 目录为空 |
+| Typeless | 听写、Ask Anything、翻译、粘贴上次结果的快捷键；语言、启动、浮条、音效、外观偏好 | 按键合并，保留新电脑的其余设置；不含账号、麦克风硬件 ID、录音和听写历史 |
+| fish | 当前 config.fish | 当前文件只有交互式 Shell 占位块，已更新旧快照 |
+| Snipaste | config.ini 中的界面/截图偏好 | 不含截图历史；当前没有自定义快捷键条目 |
+| f.lux | 色温、过渡和起床时间 | 不包含定位信息；新电脑需重新设定位置 |
+| IINA | 控制栏位置、音量 | 不包含播放历史 |
+
+准确文件清单见 `settings/manifest.json`。Karabiner、Cursor 和 fish 沿用原仓库目录，其余快照位于 `settings/`。
+
+## 尚需手动处理
+
+- Hidden Bar、1Focus：沙盒内的实际偏好尚未成功读取，本次不声称已备份。
+- Typeless 个人词典：没有在本地配置文件中找到独立词典；新电脑登录后检查账户同步。快捷键与操作偏好已备份。
+- `.zshrc`：包含本机 SSH 密码辅助脚本的调用，不上传；SSH 密钥、密码辅助脚本、Git 凭据也不上传。
+- Alfred Powerpack 等许可证、浏览器账户、聊天记录、VPN/远程网络登录：单独迁移或重新登录。
+- 触控板/鼠标设置可能受新硬件和 macOS 版本影响，恢复后检查手势与快捷键。
+- Input Source Pro 当前为 build 520 的数据库；新电脑优先使用同版本或兼容的新版本，恢复后检查应用规则。
+- 如果希望继续用 fish 作为登录 Shell，安装完成后自行执行 `chsh -s "$(command -v fish)"`（必要时先把该路径加入 `/etc/shells`）。
+
+## 后续更新
+
+此仓库公开。只提交审核过的设置，不要提交整个 `Library`、应用数据库目录、`.ssh`、`.env`、工作流密钥或历史记录。原来的 `mackup.cfg` 保留供参考；新的安装流程不再自动运行 `mackup restore`，以免它覆盖这份快照。
+
+`settings/restore.py` 是恢复工具，不会自动重新采集旧电脑的新设置。更新配置快照后再提交：
 
 ```bash
-cursor --list-extensions > ~/dotfiles/cursor/extensions.txt
-```
-
-### Karabiner 键位配置
-`karabiner/karabiner.json` 及自定义规则，软链接到 `~/.config/karabiner`。
-
-### Fish Shell 配置
-`fish/config.fish`，包含 conda 初始化等。
-
-### App 偏好设置（mackup + iCloud）
-Cursor 设置、Git 配置、fish 配置、Claude Code 设置、f.lux 偏好等。mackup 将这些设置备份到 iCloud Drive，新机器运行 `mackup restore` 恢复。
-
-### 需要手动安装
-以下应用暂无 Homebrew Cask，需手动下载：
-- 幕布：[mubu.com](https://mubu.com)
-- Mathpix Snipping Tool
-- Input Source Pro
-- WPS Office：[wpsoffice.cn](https://www.wpsoffice.cn)
-- 百度网盘
-- Typeless
-
-## 更新配置
-
-```bash
-cd ~/dotfiles
-git add .
-git commit -m "..."
+cd ~/mac-transfer
+git diff
+git add <已审核的文件>
+git commit -m "Update Mac settings snapshot"
 git push
-
-# 另一台 Mac 拉取：
-git -C ~/dotfiles pull
-```
-
-## 文件结构
-
-```
-dotfiles/
-├── Brewfile              # 所有 brew/cask/vscode 包
-├── bootstrap.sh          # 一键安装脚本
-├── mackup.cfg            # mackup 配置（iCloud 存储）
-├── fish/
-│   └── config.fish       # Fish shell 配置
-├── cursor/
-│   ├── settings.json         # Cursor 设置
-│   ├── keybindings.json      # Cursor 快捷键
-│   ├── extensions.txt        # 插件列表
-│   ├── setup.sh              # 一键配置（设置 + 插件）
-│   └── install-extensions.sh # 单独安装插件
-└── karabiner/
-    ├── karabiner.json    # Karabiner 主配置
-    └── assets/           # 自定义改键规则
 ```

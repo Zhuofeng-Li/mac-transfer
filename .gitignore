@@ -1,1 +1,8 @@
 automatic_backups/
+__pycache__/
+.DS_Store
+*.pyc
+.env
+.env.*
+private/
+backups/

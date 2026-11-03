@@ -1,6 +1,3 @@
-# Taps
-tap "homebrew/cask-fonts"
-
 # CLI tools
 brew "fish"
 brew "node"

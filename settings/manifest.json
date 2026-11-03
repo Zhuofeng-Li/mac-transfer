@@ -1,0 +1,112 @@
+{
+  "captured": "2026-11-03",
+  "preferences": [
+    {
+      "domain": "com.knollsoft.Rectangle",
+      "source": "settings/preferences/com.knollsoft.Rectangle.plist"
+    },
+    {
+      "domain": "com.runjuu.Input-Source-Pro",
+      "source": "settings/preferences/com.runjuu.Input-Source-Pro.plist"
+    },
+    {
+      "domain": "com.pilotmoon.scroll-reverser",
+      "source": "settings/preferences/com.pilotmoon.scroll-reverser.plist"
+    },
+    {
+      "domain": "org.herf.Flux",
+      "source": "settings/preferences/org.herf.Flux.plist"
+    },
+    {
+      "domain": "com.colliderli.iina",
+      "source": "settings/preferences/com.colliderli.iina.plist"
+    },
+    {
+      "domain": "NSGlobalDomain",
+      "source": "settings/preferences/NSGlobalDomain.plist"
+    },
+    {
+      "domain": "com.apple.dock",
+      "source": "settings/preferences/com.apple.dock.plist"
+    },
+    {
+      "domain": "com.apple.finder",
+      "source": "settings/preferences/com.apple.finder.plist"
+    },
+    {
+      "domain": "com.apple.symbolichotkeys",
+      "source": "settings/preferences/com.apple.symbolichotkeys.plist"
+    },
+    {
+      "domain": "com.apple.AppleMultitouchTrackpad",
+      "source": "settings/preferences/com.apple.AppleMultitouchTrackpad.plist"
+    },
+    {
+      "domain": "com.apple.driver.AppleBluetoothMultitouch.trackpad",
+      "source": "settings/preferences/com.apple.driver.AppleBluetoothMultitouch.trackpad.plist"
+    },
+    {
+      "domain": "com.apple.driver.AppleBluetoothMultitouch.mouse",
+      "source": "settings/preferences/com.apple.driver.AppleBluetoothMultitouch.mouse.plist"
+    }
+  ],
+  "files": [
+    {
+      "source": "settings/alfred/preferences/features/defaultresults/prefs.plist",
+      "target": "preferences/features/defaultresults/prefs.plist",
+      "alfred": true
+    },
+    {
+      "source": "settings/alfred/preferences/local/{localhash}/features/defaultresults/prefs.plist",
+      "target": "preferences/local/{localhash}/features/defaultresults/prefs.plist",
+      "alfred": true
+    },
+    {
+      "source": "settings/alfred/preferences/local/{localhash}/features/defaultresults/scope/prefs.plist",
+      "target": "preferences/local/{localhash}/features/defaultresults/scope/prefs.plist",
+      "alfred": true
+    },
+    {
+      "source": "settings/alfred/preferences/local/{localhash}/hotkey/prefs.plist",
+      "target": "preferences/local/{localhash}/hotkey/prefs.plist",
+      "alfred": true
+    },
+    {
+      "source": "karabiner/karabiner.json",
+      "target": ".config/karabiner/karabiner.json"
+    },
+    {
+      "source": "karabiner/assets/complex_modifications/1743851314.json",
+      "target": ".config/karabiner/assets/complex_modifications/1743851314.json"
+    },
+    {
+      "source": "karabiner/assets/complex_modifications/1744070109.json",
+      "target": ".config/karabiner/assets/complex_modifications/1744070109.json"
+    },
+    {
+      "source": "karabiner/assets/complex_modifications/1744070118.json",
+      "target": ".config/karabiner/assets/complex_modifications/1744070118.json"
+    },
+    {
+      "source": "cursor/settings.json",
+      "target": "Library/Application Support/Cursor/User/settings.json"
+    },
+    {
+      "source": "cursor/keybindings.json",
+      "target": "Library/Application Support/Cursor/User/keybindings.json"
+    },
+    {
+      "source": "fish/config.fish",
+      "target": ".config/fish/config.fish"
+    },
+    {
+      "source": "settings/snipaste/config.ini",
+      "target": ".snipaste/config.ini"
+    },
+    {
+      "source": "settings/typeless/app-settings.json",
+      "target": "Library/Application Support/Typeless/app-settings.json",
+      "merge_json": true
+    }
+  ]
+}
